@@ -49,10 +49,10 @@
       <HintPath>..\packages\Dapper.1.60.1\lib\net451\Dapper.dll</HintPath>
     </Reference>
     <Reference Include="Kogel.Dapper.Extension, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kogel.Dapper.Extension.3.0.1\lib\netstandard2.0\Kogel.Dapper.Extension.dll</HintPath>
+      <HintPath>..\packages\Kogel.Dapper.Extension.3.0.2\lib\netstandard2.0\Kogel.Dapper.Extension.dll</HintPath>
     </Reference>
     <Reference Include="Kogel.Dapper.Extension.MsSql, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kogel.Dapper.Extension.MsSql.3.0.1\lib\netstandard2.0\Kogel.Dapper.Extension.MsSql.dll</HintPath>
+      <HintPath>..\packages\Kogel.Dapper.Extension.MsSql.3.0.2\lib\netstandard2.0\Kogel.Dapper.Extension.MsSql.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
