@@ -9,7 +9,6 @@ namespace Kogel.Data.Model
 {
     public class users
     {
-
         /// <summary>
         /// 用户id
         /// </summary>    

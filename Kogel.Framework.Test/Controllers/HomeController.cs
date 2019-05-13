@@ -42,7 +42,7 @@ namespace Kogel.Framework.Test.Controllers
                 int result2 = conn.CommandSet<users>().Insert(new users() { code = Guid.NewGuid().ToString(), name = "test", createWay = 1, createDate = DateTime.Now, roleId = 2 });
                 ViewData["Message4"] = result2;
                 //删除
-                int result3 = conn.CommandSet<users>().Where(x => x.roleId == 0).Delete();
+                int result3 = conn.CommandSet<users>().Where(x => x.roleId == 0 && x.name == "test").Delete();
                 ViewData["Message5"] = result3;
                 //不连表查询返回dynamic
                 var list1 = conn.QuerySet<users>().Where(x => x.code != "1").ToList(true);

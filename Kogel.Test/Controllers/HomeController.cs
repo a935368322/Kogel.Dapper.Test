@@ -12,6 +12,10 @@ using Kogel.Dapper.Extension.MsSql;
 using Kogel.Dapper.Extension.MsSql.Extension;
 using Kogel.Dapper.Extension.MsSql.Helper;
 
+using Kogel.Dapper.Extension;
+using Dapper;
+
+
 namespace Kogel.Test.Controllers
 {
     public class HomeController : Controller
@@ -20,7 +24,7 @@ namespace Kogel.Test.Controllers
         {
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
-            using (var conn = new DapperHelper())
+            using (var conn = new System.Data.SqlClient.SqlConnection(Resource.connectionString))
             {
                 //模型类属性不能出现可空类型,例如int?
                 var list = conn.QuerySet<users>().Where(x => x.name.Contains("Y")).ToList();
@@ -42,7 +46,7 @@ namespace Kogel.Test.Controllers
                 int result2 = conn.CommandSet<users>().Insert(new users() { code = Guid.NewGuid().ToString(), name = "test", createWay = 1, createDate = DateTime.Now, roleId = 2 });
                 ViewData["Message4"] = result2;
                 //删除
-                int result3 = conn.CommandSet<users>().Where(x => x.roleId == 0).Delete();
+                int result3 = conn.CommandSet<users>().Where(x => x.roleId == 2 && x.name == users2.name).Delete();
                 ViewData["Message5"] = result3;
                 //不连表查询返回dynamic
                 var list1 = conn.QuerySet<users>().Where(x => x.code != "1").ToList(true);
