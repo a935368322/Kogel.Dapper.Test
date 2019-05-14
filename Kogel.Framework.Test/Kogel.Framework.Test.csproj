@@ -49,10 +49,10 @@
       <HintPath>..\packages\Dapper.1.60.1\lib\net451\Dapper.dll</HintPath>
     </Reference>
     <Reference Include="Kogel.Dapper.Extension, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kogel.Dapper.Extension.3.0.2\lib\netstandard2.0\Kogel.Dapper.Extension.dll</HintPath>
+      <HintPath>..\packages\Kogel.Dapper.Extension.3.0.3\lib\netstandard2.0\Kogel.Dapper.Extension.dll</HintPath>
     </Reference>
     <Reference Include="Kogel.Dapper.Extension.MsSql, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kogel.Dapper.Extension.MsSql.3.0.2\lib\netstandard2.0\Kogel.Dapper.Extension.MsSql.dll</HintPath>
+      <HintPath>..\packages\Kogel.Dapper.Extension.MsSql.3.0.3\lib\netstandard2.0\Kogel.Dapper.Extension.MsSql.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -135,6 +135,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DynamicQueryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Dapper\DapperHelper.cs" />
     <Compile Include="Global.asax.cs">
@@ -157,7 +158,59 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap-datetimepicker\bootstrap-datetimepicker.css" />
+    <Content Include="Scripts\bootstrap-datetimepicker\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\bootstrap-datetimepicker.min.css" />
+    <Content Include="Scripts\bootstrap-datetimepicker\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.ar.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.az.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.bg.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.bn.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.ca.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.cs.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.da.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.de.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.ee.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.el.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.es.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.fi.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.fr.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.he.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.hr.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.hu.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.hy.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.id.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.is.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.it.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.ja.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.ka.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.ko.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.lt.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.lv.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.ms.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.nb.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.nl.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.no.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.pl.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.pt-BR.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.pt.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.ro.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.rs-latin.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.rs.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.ru.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.sk.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.sl.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.sv.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.sw.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.th.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.tr.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.ua.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.uk.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.zh-CN.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker\locales\bootstrap-datetimepicker.zh-TW.js" />
+    <Content Include="Scripts\bootstrap-table.js" />
     <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.css" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -165,6 +218,7 @@
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-expansion.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -184,6 +238,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\DynamicQuery\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

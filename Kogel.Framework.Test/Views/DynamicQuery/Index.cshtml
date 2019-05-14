@@ -1,0 +1,104 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = null;
+}
+<link href="~/Scripts/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<!--boostrap时间控件-->
+<link href="~/Scripts/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap-datetimepicker/bootstrap-datetimepicker.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.fr.js"></script>
+<!--bootstrap表格控件-->
+<script src="~/Scripts/bootstrap-table.js"></script>
+<link href="https://cdn.bootcss.com/bootstrap-table/1.12.2/bootstrap-table.css" rel="stylesheet" />
+<!--自定义Jquery扩展方法-->
+<script src="~/Scripts/jquery-expansion.js"></script>
+<body>
+    <div id="wrapper">
+        <div class="container">
+            <div class="row">
+                <form id="search" class="form-horizontal" role="form">
+                    <div class="form-group col-sm-6 col-md-6">
+                        <label title="标题" class="control-label col-sm-3">
+                            用户名称
+                        </label>
+                        <div class="col-sm-9">
+                            <input class="form-control" type="text" name="name" data-operator="6" /><!--6  模糊查询-->
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6 col-md-6">
+                        <label title="创建时间" class="control-label col-sm-3">
+                            创建时间
+                        </label>
+                        <div class="col-sm-9">
+                            <input class="form-control date" type="text" name="createDate" data-operator="16" data-table="users" data-type="6" />
+                            <!--
+                                data-operator="16" >=
+                                data-type="6" DateTime
+                                
+                                -->
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6 col-md-6 operating">
+                        <a class="btn btn-primary" href="javascript:void(0)" onclick="users.init()">查询</a>
+                    </div>
+                </form>
+            </div>
+            <div class="row">
+                <table class="table table-bordered table-hover tablesorter" id="usersTable"></table>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    $(function () {
+        //日期控件初始化
+        $('input[name=createDate]').datetimepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,//自动关闭
+            minView: 2,//最精准的时间选择为日期0-分 1-时 2-日 3-月
+            weekStart: 0
+        });
+        users.init();
+    });
+
+    var users = {
+        init: function () {
+            //bootstrap的table绑定
+            $("#usersTable").bootstrapTable("destroy");
+            $("#usersTable").bootstrapTable({
+                method: 'post',
+                striped: true,
+                cache: false,
+                pagination: true,
+                sortable: true,
+                sortOrder: "desc",
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",//.netcore 需要使用这个数据类型传参
+                pageNumber: 1,
+                pageSize: 10,
+                pageList: [10, 25, 50, 100],  //可供选择的每页的行数（*）
+                url: '/DynamicQuery/Query',//请求的路径
+                queryParamsType: '', //默认值为 'limit' ,在默认情况下 传给服务端的参数为：offset,limit,sort
+                queryParams: function (queryParams) {//参数
+                    //生成动态条件
+                    queryParams.dynamicWhere = $("#search").serializeQuery();;
+                    return queryParams;
+                },
+                sidePagination: "server",
+                strictSearch: true,
+                minimumCountColumns: 2,
+                clickToSelect: true,
+                searchOnEnterKey: true,
+                columns: [//table列
+                    { field: 'id', title: '', visible: false },
+                    { field: 'name', title: '用户名称', sortable: true }
+                ],
+                responseHandler: function (data) {//获取后台数据后，绑定界面数据前的事件
+                    return data;
+                }
+            });
+        }
+    }
+</script>
