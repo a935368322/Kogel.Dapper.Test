@@ -83,7 +83,7 @@
                 queryParamsType: '', //默认值为 'limit' ,在默认情况下 传给服务端的参数为：offset,limit,sort
                 queryParams: function (queryParams) {//参数
                     //生成动态条件
-                    queryParams.dynamicWhere = $("#search").serializeQuery();;
+                    queryParams.dynamicWhere = $("#search").serializeQuery();
                     return queryParams;
                 },
                 sidePagination: "server",

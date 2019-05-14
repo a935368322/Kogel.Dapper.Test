@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Kogel.Dapper.Extension.Core.SetQ;
+using Kogel.Data.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +18,8 @@ namespace Kogel.Framework.Test
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            //需要在程序启动时注册
+            QuerySet<users>.Register(typeof(users));
         }
     }
 }
