@@ -8,6 +8,8 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
+using Kogel.Dapper.Extension;
+
 namespace Kogel.Framework.Test
 {
     public class MvcApplication : System.Web.HttpApplication
@@ -18,8 +20,9 @@ namespace Kogel.Framework.Test
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            //需要在程序启动时注册
-            QuerySet<users>.Register(typeof(users));
+            //预加载实体类
+            EntityCache.Register((new Type[] { typeof(users), typeof(project_Role) }));
+            
         }
     }
 }

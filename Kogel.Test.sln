@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kogel.Test", "Kogel.Test\Ko
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kogel.Framework.Test", "Kogel.Framework.Test\Kogel.Framework.Test.csproj", "{DF494B66-17A9-47C4-9C86-82B6506D5790}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kogel.Dapper.Extension", "..\..\..\Github\Kogel.Web.Process\Kogel.Dapper.Extension\Kogel.Dapper.Extension.csproj", "{D83503F4-7387-41C2-9632-EA5239A38805}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kogel.Dapper.Extension.MsSql", "..\..\..\Github\Kogel.Web.Process\Kogel.Dapper.Extension.MsSql\Kogel.Dapper.Extension.MsSql.csproj", "{ED9B1CE6-BC4F-439E-B9A2-4C2CCA9552D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{DF494B66-17A9-47C4-9C86-82B6506D5790}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF494B66-17A9-47C4-9C86-82B6506D5790}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF494B66-17A9-47C4-9C86-82B6506D5790}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D83503F4-7387-41C2-9632-EA5239A38805}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D83503F4-7387-41C2-9632-EA5239A38805}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D83503F4-7387-41C2-9632-EA5239A38805}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D83503F4-7387-41C2-9632-EA5239A38805}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED9B1CE6-BC4F-439E-B9A2-4C2CCA9552D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED9B1CE6-BC4F-439E-B9A2-4C2CCA9552D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED9B1CE6-BC4F-439E-B9A2-4C2CCA9552D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED9B1CE6-BC4F-439E-B9A2-4C2CCA9552D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

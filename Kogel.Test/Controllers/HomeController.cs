@@ -49,24 +49,33 @@ namespace Kogel.Test.Controllers
                 int result3 = conn.CommandSet<users>().Where(x => x.roleId == 2 && x.name == users2.name).Delete();
                 ViewData["Message5"] = result3;
                 //不连表查询返回dynamic
-                var list1 = conn.QuerySet<users>().Where(x => x.code != "1").ToList(true);
+                var list1 = conn.QuerySet<users>().Where(x => x.code != "1").ToList<dynamic>();
                 //连表查询返回dynamic
-                var list2 = conn.QuerySet<users>().Where(x => x.code != "1").Join<users, project_Role>(x => x.roleId, y => y.id).ToList(true);
+                var list2 = conn.QuerySet<users>().Where(x => x.code != "1").Join<users, project_Role>(x => x.roleId, y => y.id).ToList<dynamic>();
                 //SQL连表查询
                 var users3 = conn.Query<users>(@"SELECT * FROM USERS 
                                                  LEFT JOIN PROJECT_ROLE ON PROJECT_ROLE.ID=USERS.ROLEID").ToList();
                 //翻页查询
                 var list3 = conn.QuerySet<users>().OrderBy(x => x.createDate).PageList(1, 10);
                 //翻页连表查询返回dynamic
-                var list4 = conn.QuerySet<users>().Join<users, project_Role>(x => x.roleId, y => y.id).OrderBy(x => x.createDate).PageList(1, 10, true);
+                var list4 = conn.QuerySet<users>().Join<users, project_Role>(x => x.roleId, y => y.id).OrderBy(x => x.createDate).PageList(1, 10);
                 //动态化查询
                 var list5 = conn.QuerySet<users>().Where(new users() { id = 2, name = "Y11" }).Get();
                 //连表使用主表和副表条件翻页查询
                 var list6 = conn.QuerySet<users>().Join<users, project_Role>(x => x.roleId, y => y.id).Where(x => x.name == "adonis")
-                    .Where<project_Role>(x => x.projectId == 2 && x.enabled == true).OrderBy(x => x.createDate).PageList(1, 10, true);
+                    .Where<project_Role>(x => x.projectId == 2 && x.enabled == true).OrderBy(x => x.createDate).PageList(1, 10);
                 //In查询
                 var userss = conn.QuerySet<users>().Where(x => x.id.In("1,2,3")).ToList();
                 //var users = conn.QuerySet<users>().Where(x => x.id >= 2).ToList();
+
+               /* var data2 = conn.QuerySet<users>().Where("users.createWay=@createWay", new { createWay = 1 }).OrderBy(x => x.code).OrderBy(x => x.roleId).ToList();
+
+                var data3 = conn.QuerySet<users>().Where($@"users.roleId in(select roleId from role_Power where createDate<@createDate)", new
+                {
+                    createDate = DateTime.Now
+                }).Where(x => x.code != "3").ToList();
+
+               var data4= conn.QuerySet<users>().Join<users, project_Role>(x => x.roleId, y => y.id).Where("project_Role.Id>@Id", new { Id = 1 }).ToList();*/
             }
             stopwatch.Stop(); //  停止监视
             TimeSpan timeSpan = stopwatch.Elapsed; //  获取总时间

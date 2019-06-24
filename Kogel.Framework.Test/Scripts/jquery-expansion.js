@@ -22,7 +22,12 @@ $.fn.addBind = function (obj, callback) {
         }
     })
 };
-
+//移除绑定（不影响jquery原有的绑定）
+$.fn.removeBind = function () {
+    if ($(this).attr("bind-id") != undefined) {
+        delete jQueryExpansion[$(this).attr("bind-id")];
+    }
+}
 //根据model写入form值
 $.fn.setForm = function (jsonValue, callback) {
     var obj = this;
@@ -72,7 +77,6 @@ $.fn.toArray = function (jsonValue) {
 }
 //生成动态表条件
 $.fn.serializeQuery = function () {
-    debugger;
     var dynamicWhere = {};
     var inputArr = $(this).find("input");
     for (var i = 0; i < inputArr.length; i++) {
