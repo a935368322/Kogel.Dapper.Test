@@ -68,14 +68,14 @@ namespace Kogel.Test.Controllers
                 var userss = conn.QuerySet<users>().Where(x => x.id.In("1,2,3")).ToList();
                 //var users = conn.QuerySet<users>().Where(x => x.id >= 2).ToList();
 
-               /* var data2 = conn.QuerySet<users>().Where("users.createWay=@createWay", new { createWay = 1 }).OrderBy(x => x.code).OrderBy(x => x.roleId).ToList();
+                var data2 = conn.QuerySet<users>().Where("users.createWay=@createWay", new { createWay = 1 }).OrderBy(x => x.code).OrderBy(x => x.roleId).ToList();
 
                 var data3 = conn.QuerySet<users>().Where($@"users.roleId in(select roleId from role_Power where createDate<@createDate)", new
                 {
                     createDate = DateTime.Now
                 }).Where(x => x.code != "3").ToList();
 
-               var data4= conn.QuerySet<users>().Join<users, project_Role>(x => x.roleId, y => y.id).Where("project_Role.Id>@Id", new { Id = 1 }).ToList();*/
+               var data4= conn.QuerySet<users>().Join<users, project_Role>(x => x.roleId, y => y.id).Where("project_Role.Id>@Id", new { Id = 1 }).ToList();
             }
             stopwatch.Stop(); //  停止监视
             TimeSpan timeSpan = stopwatch.Elapsed; //  获取总时间
