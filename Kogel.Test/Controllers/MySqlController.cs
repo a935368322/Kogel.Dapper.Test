@@ -58,6 +58,9 @@ namespace Kogel.Test.Controllers
                         .Join<users, project_Role>((a, b) => a.roleId == b.id)
                         .Where<users, project_Role>((a, b) => a.id == 3 && b.id == 3)
                         .Get<dynamic>();
+
+                    var user4 = conn.QuerySet<users>()
+                        .Join<project_Role>("LEFT JOIN project_Role ON users.roleId=project_Role.id").Get<dynamic>();
                 }
             }
             catch (Exception ex)
