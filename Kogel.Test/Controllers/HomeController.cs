@@ -76,6 +76,7 @@ namespace Kogel.Test.Controllers
                 }).Where(x => x.code != "3").ToList();
 
                var data4= conn.QuerySet<users>().Join<users, project_Role>(x => x.roleId, y => y.id).Where("project_Role.Id>@Id", new { Id = 1 }).ToList();
+
             }
             stopwatch.Stop(); //  停止监视
             TimeSpan timeSpan = stopwatch.Elapsed; //  获取总时间
